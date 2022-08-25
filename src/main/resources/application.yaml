@@ -1,0 +1,12 @@
+spring:
+  jpa:
+    database: POSTGRESQL
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+  datasource:
+    url: jdbc:postgresql://localhost/ssp_game
+    username: ad
+    password: sa3r46es85
+  mvc:
+    log-request-details: true
