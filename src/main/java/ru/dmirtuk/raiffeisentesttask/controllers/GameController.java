@@ -23,6 +23,11 @@ import ru.dmirtuk.raiffeisentesttask.services.UserService;
  * As the result of request user get thr string with the information about the game.
  *
  * User can pass answers as much as he wants, while nickname has status Guest.
+ *
+ * REST API:
+ *  GET /game/{type}/{move}  - get computer's answer in game.
+ *                            type - type of the logic of computer's playing (random, strategy).
+ *                            move - one of three possible move (stone, piper, scissors
  */
 
 @RestController

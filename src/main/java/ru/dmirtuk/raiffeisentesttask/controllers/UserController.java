@@ -13,6 +13,10 @@ import java.util.List;
  *It is the controller class, which implements the viewing user's nicknames.
  *
  * User can get all nicknames with statuses, and also get the nickname of current Gamer status.
+ *
+ * REST API:
+ *  GET /users - get all users
+ *  GET /users/gamer - get user with status Gamer
  */
 
 

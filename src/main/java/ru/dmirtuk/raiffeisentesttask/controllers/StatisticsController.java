@@ -22,6 +22,12 @@ import java.util.List;
  * User can look at general all user's statistic, or take statistic by certain user.
  * Also, user can see general and certain user's calculated metrics: amount of games, amount of
  * wins,losses and draws, move, which was used more often.
+ *
+ * REST API:
+ *  GET /statistics - get all statistics for all users
+ *  GET /statistics/{user} - get statistics for certain user
+ *  GET /statistics/count - get statistical metrics counted for  all users
+ *  GET /statistics/count/name - get statistic counted for certain user
  */
 
 @RestController

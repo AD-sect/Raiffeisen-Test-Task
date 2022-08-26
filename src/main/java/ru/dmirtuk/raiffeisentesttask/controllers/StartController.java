@@ -1,10 +1,7 @@
 package ru.dmirtuk.raiffeisentesttask.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import ru.dmirtuk.raiffeisentesttask.enums.Status;
 import ru.dmirtuk.raiffeisentesttask.services.GameService;
 import ru.dmirtuk.raiffeisentesttask.services.UserService;
@@ -22,6 +19,10 @@ import ru.dmirtuk.raiffeisentesttask.services.UserService;
  * it is impossible to make new start with new nickname, until another Gamer is stopped.
  * If nickname have already existed and has status Gamer, nothing happens.
  * If nickname have already existed, but has status Guest, status will be changed and game will start.
+ *
+ * REST API:
+ *  GET /start/{name}  - get the start of the game either with new nickname or with used nickname
+ *                    name - nickname of user, which game need to stop
  */
 
 @RestController

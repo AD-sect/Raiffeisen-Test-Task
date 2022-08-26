@@ -14,6 +14,10 @@ import ru.dmirtuk.raiffeisentesttask.services.UserService;
  * User can stop the game, passing tne nickname of Gamer. If nickname is not exist,
  * nothing happens. If user this nickname is Guest, also nothing happens.In other situations,
  * status of nickname will be changed to Guest. In means, what he can't pass the game answers to the game part.
+ *
+ * REST API:
+ *  GET /stop/{name} - get the stop of the game
+ *                  name - nickname of user, whose game should be stopped
  */
 
 @RestController
