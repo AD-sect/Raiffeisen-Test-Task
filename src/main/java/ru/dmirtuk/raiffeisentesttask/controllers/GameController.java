@@ -11,6 +11,20 @@ import ru.dmirtuk.raiffeisentesttask.services.GameService;
 import ru.dmirtuk.raiffeisentesttask.services.StatisticsService;
 import ru.dmirtuk.raiffeisentesttask.services.UserService;
 
+/**
+ *It is the controller class, which implements the game in two ways.
+ *
+ * Only user with status Gamer can play (get the result by game url). To have this status user have to start the game.
+ * If there are no Gamers among nicknames, game won't play, nothing happens.
+ *
+ *
+ * At tne game, user don't need to indicate the nickname, statistic was written to the current gamer name.
+ * At the game user have to indicate the type of the game: random or strategy behavior of computer.
+ * As the result of request user get thr string with the information about the game.
+ *
+ * User can pass answers as much as he wants, while nickname has status Guest.
+ */
+
 @RestController
 @RequestMapping(value ="/game")
 public class GameController {
@@ -20,7 +34,8 @@ public class GameController {
     private UserService userService;
 
     @Autowired
-    public  GameController(GameService gameService, StatisticsService statisticsService, UserService userService) {
+    public  GameController(GameService gameService, StatisticsService statisticsService,
+                           UserService userService) {
         this.gameService = gameService;
         this.statisticsService = statisticsService;
         this.userService = userService;

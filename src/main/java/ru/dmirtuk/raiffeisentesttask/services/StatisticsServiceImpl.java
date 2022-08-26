@@ -14,6 +14,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+
+/**
+ *It is the class, which is which implements the logic of using statistic's information.
+ * In this class methods of getting statistics and calculating statistical metrics are implemented.
+ * Also, there is a method of add statistic information to the table.
+ */
+
+
 @Service
 public class StatisticsServiceImpl implements StatisticsService {
 
@@ -51,8 +59,6 @@ public class StatisticsServiceImpl implements StatisticsService {
 
     @Override
     public List<Statistic> getStatisticByName(String name) {
-//        System.out.println(userRepository.findUserByName(name).getId());
-//        return null;
         return statisticsRepository
                 .findByUserId(userRepository.findUserByName(name).getId());
     }

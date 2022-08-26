@@ -10,7 +10,10 @@ import ru.dmirtuk.raiffeisentesttask.enums.Result;
 
 import javax.persistence.*;
 
-// TODO: 25.08.2022 сделать enum в gametype
+
+/**
+ *It is the model class for table Statistic
+ */
 @Data
 @Entity
 @AllArgsConstructor

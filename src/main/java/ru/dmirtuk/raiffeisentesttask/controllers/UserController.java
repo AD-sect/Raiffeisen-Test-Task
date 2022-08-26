@@ -9,6 +9,14 @@ import ru.dmirtuk.raiffeisentesttask.services.UserService;
 
 import java.util.List;
 
+/**
+ *It is the controller class, which implements the viewing user's nicknames.
+ *
+ * User can get all nicknames with statuses, and also get the nickname of current Gamer status.
+ */
+
+
+
 @RestController
 @RequestMapping(value ="/users")
 public class UserController {

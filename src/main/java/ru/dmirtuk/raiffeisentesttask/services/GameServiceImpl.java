@@ -11,7 +11,16 @@ import ru.dmirtuk.raiffeisentesttask.models.Statistic;
 import java.util.Arrays;
 import java.util.Random;
 
-// TODO: 25.08.2022 реализовать вторую стратегию
+/**
+ *It is the class, which implements the logic of choosing the computer's response in game.
+ *
+ * The random way simply made random answer.
+ * Another implementation of the logic of the computer game is based on the idea
+ * that when a person loses, he changes answer in next round. If he wins, he does not change the answer.
+ *
+ * Logic: if computer loses, then next time it should throw out an item that was not in the last round.
+ * If computer win, then in the next round you must throw out the item that the person showed in the last round.
+ */
 
 @Service("gameServiceImpl")
 public class GameServiceImpl implements GameService{

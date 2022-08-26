@@ -12,6 +12,18 @@ import ru.dmirtuk.raiffeisentesttask.services.UserService;
 
 import java.util.List;
 
+/**
+ *It is the controller class, which implements the viewing statistics.
+ *
+ * Statistic will be written with tne name of current nickname with status Gamer.
+ * If there are no Gamers, only nicknames with status Guests, game  will not start
+ * and the statistics will not be recorded
+ *
+ * User can look at general all user's statistic, or take statistic by certain user.
+ * Also, user can see general and certain user's calculated metrics: amount of games, amount of
+ * wins,losses and draws, move, which was used more often.
+ */
+
 @RestController
 @RequestMapping(value ="/statistics")
 public class StatisticsController {

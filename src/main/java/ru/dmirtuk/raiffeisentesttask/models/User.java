@@ -9,13 +9,16 @@ import ru.dmirtuk.raiffeisentesttask.enums.Status;
 import javax.persistence.*;
 import java.util.List;
 
+/**
+ *It is the model class for table User
+ */
+
 @Data
 @Entity
 @AllArgsConstructor
 @RequiredArgsConstructor
 @Table(name="users")
 public class User {
-//добавить юзеру роль
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;

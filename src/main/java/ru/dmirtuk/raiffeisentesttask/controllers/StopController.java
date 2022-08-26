@@ -8,6 +8,14 @@ import org.springframework.web.bind.annotation.RestController;
 import ru.dmirtuk.raiffeisentesttask.enums.Status;
 import ru.dmirtuk.raiffeisentesttask.services.UserService;
 
+/**
+ *It is the controller class, which implements stop of the game.
+ *
+ * User can stop the game, passing tne nickname of Gamer. If nickname is not exist,
+ * nothing happens. If user this nickname is Guest, also nothing happens.In other situations,
+ * status of nickname will be changed to Guest. In means, what he can't pass the game answers to the game part.
+ */
+
 @RestController
 @RequestMapping(value ="/stop")
 public class StopController {
