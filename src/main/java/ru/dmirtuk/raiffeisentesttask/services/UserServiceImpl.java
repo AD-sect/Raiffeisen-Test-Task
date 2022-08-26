@@ -12,7 +12,7 @@ import java.util.List;
 
 /**
  *It is the class, which is which implements the logic of using user's information.
- * In this class methods of findingusers infornation by name, by status and getting
+ * In this class methods of finding users information by name, by status and getting
  * parts of information about users are implemented.
  * Also, there is a method of add user information to the table.
  */
