@@ -7,6 +7,7 @@ import ru.dmirtuk.raiffeisentesttask.enums.Result;
 import ru.dmirtuk.raiffeisentesttask.models.Statistic;
 import ru.dmirtuk.raiffeisentesttask.models.User;
 import ru.dmirtuk.raiffeisentesttask.repositoty.StatisticsRepository;
+import ru.dmirtuk.raiffeisentesttask.repositoty.UserRepository;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -15,10 +16,12 @@ import java.util.stream.Collectors;
 public class StatisticsServiceImpl implements StatisticsService {
 
     private StatisticsRepository statisticsRepository;
+    private UserRepository userRepository;
 
     @Autowired
-    public StatisticsServiceImpl(StatisticsRepository statisticsRepository){
+    public StatisticsServiceImpl(StatisticsRepository statisticsRepository, UserRepository userRepository){
         this.statisticsRepository = statisticsRepository;
+        this.userRepository = userRepository;
     }
 
     @Override
@@ -36,4 +39,21 @@ public class StatisticsServiceImpl implements StatisticsService {
     public List<Statistic> getStatistics() {
         return statisticsRepository.findAll().stream().collect(Collectors.toList());
     }
+
+    @Override
+    public Statistic getLastStatistic() {
+       return statisticsRepository.findFirstByOrderByCreatedAtDesc();
+    }
+
+    @Override
+    public List<Statistic> getStatisticByName(String name) {
+        return statisticsRepository.findByUserId(userRepository.findUserByName(name).getId());
+    }
+
+    @Override
+    public boolean exists() {
+        return statisticsRepository.existsBy();
+    }
+
+
 }

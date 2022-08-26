@@ -1,16 +1,29 @@
 package ru.dmirtuk.raiffeisentesttask.services;
 
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.dmirtuk.raiffeisentesttask.enums.Move;
 import ru.dmirtuk.raiffeisentesttask.enums.Result;
+import ru.dmirtuk.raiffeisentesttask.models.Statistic;
 
+
+import java.util.Arrays;
 import java.util.Random;
 
 // TODO: 25.08.2022 реализовать вторую стратегию
 
 @Service("gameServiceImpl")
 public class GameServiceImpl implements GameService{
+
+
+
+    StatisticsService statisticsService;
+
+    @Autowired
+    public GameServiceImpl( StatisticsService statisticsService){
+        this.statisticsService = statisticsService;
+    }
 
     @Override
     public Move getRandomMove(){
@@ -22,7 +35,26 @@ public class GameServiceImpl implements GameService{
 
     @Override
     public Move getStrategyMove() {
-        return  null;
+        if(statisticsService.exists()){
+            Statistic stat = statisticsService.getLastStatistic();
+            Move userMove = stat.getUserMove();
+            Move compMove = stat.getCompMove();
+            Result result = stat.getRes();
+
+            if(result.equals(Result.LOOSE)){
+                return userMove;
+            }else if(result.equals(Result.WIN)){
+                Move[] moveArr = Move.values();
+                return Arrays.stream(moveArr)
+                        .filter(m -> !(m.equals(userMove)))
+                        .filter(m -> !(m.equals(compMove)))
+                        .findFirst().get();
+            }else{
+                return getRandomMove();
+            }
+        }else{
+            return getRandomMove();
+        }
     }
 
     @Override

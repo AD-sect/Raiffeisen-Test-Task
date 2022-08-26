@@ -11,4 +11,8 @@ public interface StatisticsService {
     public Statistic addStatistics(User user, Result res,
                                    Move compMove, Move userMove);
     public List<Statistic> getStatistics();
+    public Statistic getLastStatistic();
+    public List<Statistic> getStatisticByName(String name);
+
+    public boolean exists();
 }
