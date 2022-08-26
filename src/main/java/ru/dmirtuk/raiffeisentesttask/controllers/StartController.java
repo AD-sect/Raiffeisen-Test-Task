@@ -20,11 +20,15 @@ public class StartController {
         this.userService = userService;
     }
 
-
     @GetMapping("/{name}")
     public String startGame(@PathVariable String name){
 
-        if(!userService.exist(name)) {
+        if(userService.existsStatus(Status.GAMER)){
+            return "You didn't stop the game with nickname : "
+                    + userService.getUserByStatus(Status.GAMER).getName().toUpperCase();
+        }
+
+        if(!userService.existName(name)) {
             userService.addUser(name, Status.GAMER);
             return "You started the first game!";
 
@@ -33,9 +37,10 @@ public class StartController {
 
         }else{
             userService.setStatus(name, Status.GAMER);
-            return "You started the another game!";
+            return "You started another game!";
         }
     }
+
 
 
 

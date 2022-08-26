@@ -16,14 +16,13 @@ public class StopController {
 
     @Autowired
     public StopController(UserService userService) {
-
         this.userService = userService;
     }
 
 
     @GetMapping("/{name}")
     public String stop(@PathVariable String name){
-        if(!userService.exist(name)) {
+        if(!userService.existName(name)) {
             return "Gamer with this name doesn't played!";
 
         }else if(userService.getStatus(name).equals(Status.GAMER)){

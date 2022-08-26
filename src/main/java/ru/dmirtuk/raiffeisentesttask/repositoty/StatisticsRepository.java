@@ -4,11 +4,12 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import ru.dmirtuk.raiffeisentesttask.models.Statistic;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface StatisticsRepository extends JpaRepository<Statistic, Long> {
-    Statistic findFirstByOrderByCreatedAtDesc();
-
+    Statistic findTopByOrderByIdDesc();
     List<Statistic> findByUserId(Long id);
 
+    List<Statistic> findAll();
     boolean existsBy();
 }

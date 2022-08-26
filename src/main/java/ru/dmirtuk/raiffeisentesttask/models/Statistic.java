@@ -4,6 +4,7 @@ package ru.dmirtuk.raiffeisentesttask.models;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import ru.dmirtuk.raiffeisentesttask.enums.Type;
 import ru.dmirtuk.raiffeisentesttask.enums.Move;
 import ru.dmirtuk.raiffeisentesttask.enums.Result;
 
@@ -22,10 +23,11 @@ public class Statistic {
 
     @Column
     @Enumerated(EnumType.STRING)
-    private Result res;
+    private Result result;
 
     @Column
-    private String gameType;
+    @Enumerated(EnumType.STRING)
+    private Type type;
 
     @Column
     @Enumerated(EnumType.STRING)

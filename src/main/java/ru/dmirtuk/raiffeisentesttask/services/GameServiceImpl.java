@@ -16,8 +16,6 @@ import java.util.Random;
 @Service("gameServiceImpl")
 public class GameServiceImpl implements GameService{
 
-
-
     StatisticsService statisticsService;
 
     @Autowired
@@ -35,13 +33,13 @@ public class GameServiceImpl implements GameService{
 
     @Override
     public Move getStrategyMove() {
-        if(statisticsService.exists()){
+        if(statisticsService.isEmpty()){
             Statistic stat = statisticsService.getLastStatistic();
             Move userMove = stat.getUserMove();
             Move compMove = stat.getCompMove();
-            Result result = stat.getRes();
+            Result result = stat.getResult();
 
-            if(result.equals(Result.LOOSE)){
+            if(result.equals(Result.LOSS)){
                 return userMove;
             }else if(result.equals(Result.WIN)){
                 Move[] moveArr = Move.values();
@@ -59,7 +57,6 @@ public class GameServiceImpl implements GameService{
 
     @Override
     public Result chooseWinner(Move move, Move compMove) {
-//        Move compMove = getRandomMove();
         if(compMove.equals(move))
             return Result.DRAW;
         switch(move){
@@ -67,19 +64,19 @@ public class GameServiceImpl implements GameService{
                 if(compMove.equals(Move.STONE)){
                     return Result.WIN;
                 }else{
-                    return Result.LOOSE;
+                    return Result.LOSS;
                 }
             case STONE:
                 if(compMove.equals(Move.SCISSORS)){
                     return Result.WIN;
                 }else{
-                    return Result.LOOSE;
+                    return Result.LOSS;
                 }
             case SCISSORS:
                 if(compMove.equals(Move.PIPER)){
                     return Result.WIN;
                 }else{
-                    return Result.LOOSE;
+                    return Result.LOSS;
                 }
         }
     return Result.DRAW;

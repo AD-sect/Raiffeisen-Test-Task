@@ -27,7 +27,7 @@ public class UserServiceImpl implements UserService  {
         return user;
     }
 
-    public boolean exist(String name){
+    public boolean existName(String name){
         return userRepository.existsByName(name);
     }
 
@@ -56,11 +56,27 @@ public class UserServiceImpl implements UserService  {
 
     @Override
     public boolean existsStatus(Status status) {
-        if(userRepository.findUserByStatus(status) != null){
-            return true;
-        }else{
+        if(userRepository.findUserByStatus(status).isEmpty()){
             return false;
+        }else{
+            return true;
         }
+    }
+
+    @Override
+    public List<User> getAll() {
+        return userRepository.findAll();
+    }
+
+    @Override
+    public User getGamerUser() {
+        return userRepository.findUserByStatus(Status.GAMER)
+                .stream().findFirst().get();
+    }
+
+    @Override
+    public boolean isEmpty() {
+        return userRepository.existsBy();
     }
 
 
